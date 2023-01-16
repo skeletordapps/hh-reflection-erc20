@@ -8,14 +8,17 @@ dotenv.config()
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL as string
 const PRIVATE_KEY = process.env.PRIVATE_KEY as string
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY as string
+const FTMSCAN_API_KEY = process.env.FTMSCAN_API_KEY as string
 const INFURA_NODE_HTTPS = process.env.INFURA_NODE_HTTPS as string
 const config: HardhatUserConfig = {
   solidity: '0.8.17',
-  defaultNetwork: 'hardhat',
+  // defaultNetwork: 'hardhat',
   networks: {
     hardhat: {
       chainId: 31337,
       allowUnlimitedContractSize: true,
+      gas: 2100000,
+      gasPrice: 8000000000,
       mining: {
         auto: true,
         interval: [500, 1000],
@@ -41,14 +44,23 @@ const config: HardhatUserConfig = {
       chainId: 5,
       url: GOERLI_RPC_URL,
       accounts: [PRIVATE_KEY],
-      // gasPrice: 'auto',
-      // gas: 'auto',
-      // allowUnlimitedContractSize: true,
+    },
+    opera: {
+      chainId: 250,
+      url: 'https://rpc.ftm.tools',
+      accounts: [PRIVATE_KEY],
+    },
+    operaTest: {
+      chainId: 4002,
+      url: 'https://rpc.testnet.fantom.network',
+      accounts: [PRIVATE_KEY],
     },
   },
   etherscan: {
     apiKey: {
       goerli: ETHERSCAN_API_KEY,
+      opera: FTMSCAN_API_KEY,
+      ftmTestnet: FTMSCAN_API_KEY,
     },
   },
   namedAccounts: {

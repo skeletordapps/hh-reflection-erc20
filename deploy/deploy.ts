@@ -9,20 +9,12 @@ const deploy: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await getNamedAccounts()
   const { deploy, log } = deployments
   const chainId: number = network.config.chainId!
+  const args = [networkConfig[chainId].router]
 
-  // const _router = networkConfig[chainId]._router
-  // const __name = networkConfig[chainId].__name
-  // const __symbol = networkConfig[chainId].__symbol
-  // const args = [_router, __name, __symbol]
-
-  // console.log(deployer, args, network.name, developmentChains)
-
-  const args = [networkConfig[chainId].charityWalletAddress]
-
-  const token = await deploy('FlyPaper', {
-    contract: 'FlyPaper',
+  const token = await deploy('CoinToken', {
+    contract: 'CoinToken',
     from: deployer,
-    args: args,
+    args: [],
     log: true,
     waitConfirmations: developmentChains.includes(network.name) ? 1 : 6,
   })
@@ -34,7 +26,7 @@ const deploy: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     process.env.ETHERSCAN_API_KEY
   ) {
     log('Verifying...')
-    await verify(token.address, args)
+    await verify(token.address, [])
   }
 
   log('-------------------------------')

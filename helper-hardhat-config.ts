@@ -1,50 +1,30 @@
-// type Config = {
-//   [key: string]: {
-//     name: string
-//     _router: string
-//     __name: string
-//     __symbol: string
-//   }
-// }
-
 type Config = {
   [key: string]: {
     name: string
-    charityWalletAddress: string
+    router: string
   }
 }
 
 export const networkConfig: Config = {
-  // 5: {
-  //   name: 'goerli',
-  //   _router: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-  //   __name: 'ReflectionToken',
-  //   __symbol: 'RFT',
-  // },
-  // 31337: {
-  //   name: 'hardhat',
-  //   _router: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-  //   __name: 'ReflectionToken',
-  //   __symbol: 'RFT',
-  // },
-  // localhost: {
-  //   name: 'localhost',
-  //   _router: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-  //   __name: 'ReflectionToken',
-  //   __symbol: 'RFT',
-  // },
-
   5: {
     name: 'goerli',
-    charityWalletAddress: '0xF23a78BDb0D06fEd3410d3e45b4C180742B592c4',
+    router: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
+  },
+  250: {
+    name: 'opera',
+    router: '0xF491e7B69E4244ad4002BC14e878a34207E38c29',
+  },
+  4002: {
+    name: 'operaTest',
+    router: '0xa6AD18C2aC47803E193F75c3677b14BF19B94883',
   },
   31337: {
     name: 'hardhat',
-    charityWalletAddress: '0xF23a78BDb0D06fEd3410d3e45b4C180742B592c4',
+    router: '0xF491e7B69E4244ad4002BC14e878a34207E38c29',
   },
   localhost: {
     name: 'localhost',
-    charityWalletAddress: '0xF23a78BDb0D06fEd3410d3e45b4C180742B592c4',
+    router: '0xF491e7B69E4244ad4002BC14e878a34207E38c29',
   },
 }
 
