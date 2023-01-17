@@ -4,6 +4,7 @@ pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "hardhat/console.sol";
 
 interface IUniswapV2Factory {
     event PairCreated(
@@ -380,8 +381,8 @@ contract FBonk is IERC20, Ownable {
         _decimals = 9;
         _tTotal = 1000 * 10 ** _decimals;
         _rTotal = (MAX - (MAX % _tTotal));
-        _taxFee = 5;
-        _liquidityFee = 5;
+        _taxFee = 4;
+        _liquidityFee = 2;
         _previousTaxFee = _taxFee;
 
         _devFee = 0;
@@ -587,6 +588,7 @@ contract FBonk is IERC20, Ownable {
     }
 
     function excludeFromFee(address account) public onlyOwner {
+        // console.log("INSIDE");
         _isExcludedFromFee[account] = true;
     }
 

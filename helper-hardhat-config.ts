@@ -20,11 +20,11 @@ export const networkConfig: Config = {
   },
   31337: {
     name: 'hardhat',
-    router: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D', // uniswap mainnet
+    router: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D', // uniswap - forked mainnet
   },
   localhost: {
     name: 'localhost',
-    router: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D', // uniswap mainnet
+    router: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D', // uniswap - forked mainnet
   },
 }
 
