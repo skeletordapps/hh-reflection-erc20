@@ -11,10 +11,10 @@ const deploy: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const chainId: number = network.config.chainId!
   const args = [networkConfig[chainId].router]
 
-  const token = await deploy('CoinToken', {
-    contract: 'CoinToken',
+  const token = await deploy('FBonk', {
+    contract: 'FBonk',
     from: deployer,
-    args: [],
+    args: args,
     log: true,
     waitConfirmations: developmentChains.includes(network.name) ? 1 : 6,
   })
@@ -26,7 +26,7 @@ const deploy: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     process.env.ETHERSCAN_API_KEY
   ) {
     log('Verifying...')
-    await verify(token.address, [])
+    await verify(token.address, args)
   }
 
   log('-------------------------------')

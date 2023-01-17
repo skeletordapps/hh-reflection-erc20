@@ -16,13 +16,13 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       chainId: 31337,
-      allowUnlimitedContractSize: true,
-      gas: 2100000,
-      gasPrice: 8000000000,
-      mining: {
-        auto: true,
-        interval: [500, 1000],
-      },
+      // allowUnlimitedContractSize: true,
+      // gas: 2100000,
+      // gasPrice: 8000000000,
+      // mining: {
+      //   auto: true,
+      //   interval: [500, 1000],
+      // },
       forking: {
         url: INFURA_NODE_HTTPS,
         blockNumber: 10207858,
