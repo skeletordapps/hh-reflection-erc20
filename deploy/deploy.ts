@@ -9,10 +9,14 @@ const deploy: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await getNamedAccounts()
   const { deploy, log } = deployments
   const chainId: number = network.config.chainId!
-  const args = [networkConfig[chainId].router]
 
-  const token = await deploy('FBonk', {
-    contract: 'FBonk',
+  const router = networkConfig[chainId].router
+  const tokenName = networkConfig[chainId].tokenName
+  const tokenSymbol = networkConfig[chainId].tokenSymbol
+  const args = [router, tokenName, tokenSymbol]
+
+  const token = await deploy('RFToken', {
+    contract: 'RFToken',
     from: deployer,
     args: args,
     log: true,

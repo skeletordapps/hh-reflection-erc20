@@ -7,6 +7,7 @@ dotenv.config()
 
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL as string
 const PRIVATE_KEY = process.env.PRIVATE_KEY as string
+const FANTOM_PRIVATE_KEY = process.env.FANTOM_PRIVATE_KEY as string
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY as string
 const FTMSCAN_API_KEY = process.env.FTMSCAN_API_KEY as string
 const INFURA_NODE_HTTPS = process.env.INFURA_NODE_HTTPS as string
@@ -48,12 +49,12 @@ const config: HardhatUserConfig = {
     opera: {
       chainId: 250,
       url: 'https://rpc.ftm.tools',
-      accounts: [PRIVATE_KEY],
+      accounts: [FANTOM_PRIVATE_KEY],
     },
     operaTest: {
       chainId: 4002,
       url: 'https://rpc.testnet.fantom.network',
-      accounts: [PRIVATE_KEY],
+      accounts: [FANTOM_PRIVATE_KEY],
     },
   },
   etherscan: {

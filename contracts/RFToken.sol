@@ -332,7 +332,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
 
-contract FBonk is IERC20, Ownable {
+contract RFToken is IERC20, Ownable {
     mapping(address => uint256) private _rOwned;
     mapping(address => uint256) private _tOwned;
     mapping(address => mapping(address => uint256)) private _allowances;
@@ -373,40 +373,34 @@ contract FBonk is IERC20, Ownable {
         inSwapAndLiquify = false;
     }
 
-    constructor(address router) payable {
+    constructor(
+        address router,
+        string memory tokenName,
+        string memory tokenSymbol
+    ) payable {
         address cachedOwner = owner();
-        // address router = 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
-        _name = "FBonk";
-        _symbol = "FBONK";
+        _name = tokenName;
+        _symbol = tokenSymbol;
         _decimals = 9;
-        _tTotal = 1000 * 10 ** _decimals;
+        _tTotal = 1_000_000_000e9;
         _rTotal = (MAX - (MAX % _tTotal));
-        _taxFee = 4;
-        _liquidityFee = 2;
+        _taxFee = 3;
+        _liquidityFee = 3;
         _previousTaxFee = _taxFee;
-
         _devFee = 0;
         _previousDevFee = _devFee;
         _previousLiquidityFee = _liquidityFee;
-        _maxTxAmount = ((_tTotal * 5) / 1000) * 10 ** _decimals;
-        numTokensSellToAddToLiquidity =
-            ((_tTotal * 2) / 1000000000000) *
-            10 ** 9;
-        // numTokensSellToAddToLiquidity =
-        //     ((_tTotal * 5) / 10000) *
-        //     10 ** _decimals;
+        _maxTxAmount = 2_000_000e9;
+        numTokensSellToAddToLiquidity = 4e9;
         _devWalletAddress = cachedOwner;
-
         _rOwned[cachedOwner] = _rTotal;
 
         IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(router);
         // Create a uniswap pair for this new token
         uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
             .createPair(address(this), _uniswapV2Router.WETH());
-
         // set the rest of the contract variables
         uniswapV2Router = _uniswapV2Router;
-
         //exclude owner and this contract from fee
         _isExcludedFromFee[cachedOwner] = true;
         _isExcludedFromFee[address(this)] = true;
