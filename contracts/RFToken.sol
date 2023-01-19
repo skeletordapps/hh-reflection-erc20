@@ -582,7 +582,6 @@ contract RFToken is IERC20, Ownable {
     }
 
     function excludeFromFee(address account) public onlyOwner {
-        // console.log("INSIDE");
         _isExcludedFromFee[account] = true;
     }
 
