@@ -1,9 +1,9 @@
 {
-  "name": "hh-fbonk",
+  "name": "hh-reflection-erc20",
   "version": "1.0.0",
   "description": "An ERC20 token with reflection module",
   "main": "index.js",
-  "repository": "https://github.com/skeletordapps/hh-fbonk",
+  "repository": "https://github.com/skeletordapps/hh-reflection-erc20",
   "author": "skeletordapps",
   "license": "MIT",
   "devDependencies": {
