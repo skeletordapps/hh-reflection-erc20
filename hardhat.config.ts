@@ -10,9 +10,10 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY as string
 const FANTOM_PRIVATE_KEY = process.env.FANTOM_PRIVATE_KEY as string
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY as string
 const FTMSCAN_API_KEY = process.env.FTMSCAN_API_KEY as string
+const BSCSCAN_API_KEY = process.env.BSCSCAN_API_KEY as string
 const INFURA_NODE_HTTPS = process.env.INFURA_NODE_HTTPS as string
 const config: HardhatUserConfig = {
-  solidity: '0.8.17',
+  solidity: '0.8.19',
   // defaultNetwork: 'hardhat',
   networks: {
     hardhat: {
@@ -56,12 +57,18 @@ const config: HardhatUserConfig = {
       url: 'https://rpc.testnet.fantom.network',
       accounts: [FANTOM_PRIVATE_KEY],
     },
+    bscTest: {
+      chainId: 97,
+      url: 'https://endpoints.omniatech.io/v1/bsc/testnet/public',
+      accounts: [FANTOM_PRIVATE_KEY],
+    },
   },
   etherscan: {
     apiKey: {
       goerli: ETHERSCAN_API_KEY,
       opera: FTMSCAN_API_KEY,
       ftmTestnet: FTMSCAN_API_KEY,
+      bscTestnet: BSCSCAN_API_KEY,
     },
   },
   namedAccounts: {

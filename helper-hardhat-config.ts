@@ -14,6 +14,12 @@ export const networkConfig: Config = {
     tokenName: 'RFToken',
     tokenSymbol: 'RFT',
   },
+  97: {
+    name: 'bscTest',
+    router: '0xdc4904b5f716Ff30d8495e35dC99c109bb5eCf81', // pancake
+    tokenName: 'RFToken',
+    tokenSymbol: 'RFT',
+  },
   250: {
     name: 'opera',
     router: '0xF491e7B69E4244ad4002BC14e878a34207E38c29', // spooky
